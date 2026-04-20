@@ -1,4 +1,4 @@
-package com.guilhermesantana.task_list.util;
+package com.guilhermesantana.task_list.models.enums;
 
 public enum Category {
     HEALTH("H", "Saúde"),

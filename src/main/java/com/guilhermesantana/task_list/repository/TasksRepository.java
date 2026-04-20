@@ -1,7 +1,7 @@
 package com.guilhermesantana.task_list.repository;
 
 import com.guilhermesantana.task_list.models.Tasks;
-import com.guilhermesantana.task_list.util.Category;
+import com.guilhermesantana.task_list.models.enums.Category;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -25,18 +25,20 @@ public class TasksRepository {
         task.setDescription(rs.getString("description"));
         task.setDate(rs.getObject("task_date", LocalDateTime.class));
         task.setCategory(Category.fromDescription(rs.getString("category")));
+        task.setLocation(rs.getString("task_location"));
         task.setFinished(rs.getBoolean("is_finished"));
 
         return task;
     };
 
     public Tasks creteTask(Tasks task) {
-        String sql = "INSERT INTO tasks(title, description, task_date, category, is_finished) VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tasks(title, description, task_date, category, task_location, is_finished) VALUES(?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql,
                 task.getTitle(),
                 task.getDescription(),
                 task.getDate(),
                 task.getCategory().getDescription(),
+                task.getLocation(),
                 task.getIsFinished());
 
         return task;

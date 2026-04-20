@@ -1,7 +1,7 @@
 package com.guilhermesantana.task_list.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.guilhermesantana.task_list.util.Category;
+import com.guilhermesantana.task_list.models.enums.Category;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -23,15 +23,17 @@ public class Tasks {
     @NotNull(message = "Data obrigatório")
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime date;
+    private String location;
     private boolean isFinished;
 
     public Tasks() {}
 
-    public Tasks(String title, String description, LocalDateTime date, Category category) {
+    public Tasks(String title, String description, LocalDateTime date, Category category, String location) {
         this.title = title;
         this.description = description;
         this.date = date;
         this.category = category;
+        this.location = location;
         this.isFinished = false;
     }
 
@@ -73,6 +75,14 @@ public class Tasks {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Category getCategory() {
