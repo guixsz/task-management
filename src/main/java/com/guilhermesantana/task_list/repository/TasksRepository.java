@@ -45,12 +45,17 @@ public class TasksRepository {
     }
 
     public List<Tasks> findAll() {
-        String sql = "SELECT * FROM tasks WHERE is_finished = false";
+        String sql = "SELECT * FROM tasks WHERE is_finished = false ORDER BY task_date";
         return jdbcTemplate.query(sql, tasksRowMapper);
     }
 
     public List<Tasks> findTasksComming() {
         String sql = "SELECT * FROM tasks WHERE task_date::date = CURRENT_DATE";
         return jdbcTemplate.query(sql, tasksRowMapper);
+    }
+
+    public void updateIsFinished(Integer id) {
+        String sql = "UPDATE tasks SET is_finished = true WHERE id = ?";
+        jdbcTemplate.update(sql, id);
     }
 }

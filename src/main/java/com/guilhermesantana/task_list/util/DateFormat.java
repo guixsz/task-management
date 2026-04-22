@@ -5,8 +5,13 @@ import java.time.format.DateTimeFormatter;
 
 public class DateFormat {
 
-    public static String dateFormatted(LocalDateTime date) {
+    public static String toHour(LocalDateTime date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return date.format(formatter);
+    }
+
+    public static String dateFormatted(LocalDateTime date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return date.format(formatter);
     }
 }

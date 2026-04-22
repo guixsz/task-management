@@ -2,6 +2,7 @@ package com.guilhermesantana.task_list.controller;
 
 import com.guilhermesantana.task_list.config.EmailService;
 import com.guilhermesantana.task_list.models.Tasks;
+import com.guilhermesantana.task_list.models.dtos.TaskDTO;
 import com.guilhermesantana.task_list.service.TaskService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
+@CrossOrigin(origins = "*")
 public class TaskController {
 
     private final EmailService emailService;
@@ -28,8 +30,8 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Tasks>> findAll() {
-        List<Tasks> list = taskService.findAll();
+    public ResponseEntity<List<TaskDTO>> findAll() {
+        List<TaskDTO> list = taskService.findAll();
         return ResponseEntity.ok(list);
     }
 

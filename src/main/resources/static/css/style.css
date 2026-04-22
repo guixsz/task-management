@@ -1,0 +1,99 @@
+@import "header.css";
+
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+}
+
+#form-task {
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid var(--border-color);
+}
+
+.group-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.group-input:last-child {
+    margin-bottom: 0;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+input, select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fcfdfe;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+    outline: none;
+}
+
+input:hover, select:hover {
+    border-color: #cbd5e1;
+}
+
+input:focus, select:focus {
+    border-color: var(--brand-color);
+    box-shadow: 0 0 0 4px var(--input-focus);
+    background-color: #ffffff;
+}
+
+input[type="datetime-local"] {
+    cursor: pointer;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://w3.org' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+.btn-post {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--brand-color);
+    color: white;
+    border: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    transition: var(--transition);
+}
+
+.btn-post:hover {
+    background-color: var(--brand-hover);
+}

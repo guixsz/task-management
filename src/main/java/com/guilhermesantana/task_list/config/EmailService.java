@@ -28,6 +28,7 @@ public class EmailService {
 
         for (Tasks task : listTasks) {
             sendEmail(task);
+            taskRepository.updateIsFinished(task.getId());
         }
     }
 
@@ -42,7 +43,9 @@ public class EmailService {
             String htmlContent = "<html>" +
                     "<body style='font-family: Arial, sans-serif;'>" +
                     "<h2 style='color: #2E86C1; font-size:22px'>Você tem uma tarefa hoje!</h2>" +
-                    "<p style='font-size: 18px;'>Olá. Bom dia, Senhor! Não se esqueça! <b>" + task.getTitle() + "</b> às <b>"+ DateFormat.dateFormatted(task.getDate()) + "</b></p>" +
+                    "<p style='font-size: 18px;'>Olá. Bom dia, Senhor! Não se esqueça! <b>" + task.getTitle() + "</b></p>" +
+                    "<p style='font-size: 18px;'><b>Horario: </b>" + DateFormat.toHour(task.getDate()) + "</p>" +
+                    "<p style='font-size: 18px;'><b>Localização: </b>" + task.getLocation() + "</p>" +
                     "</body>" +
                     "</html>";
 

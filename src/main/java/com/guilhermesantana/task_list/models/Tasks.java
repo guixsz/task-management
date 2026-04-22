@@ -21,7 +21,7 @@ public class Tasks {
     private Category category;
 
     @NotNull(message = "Data obrigatório")
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm[:ss]")
     private LocalDateTime date;
     private String location;
     private boolean isFinished;
