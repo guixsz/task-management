@@ -6,6 +6,7 @@ import com.guilhermesantana.task_list.repository.TasksRepository;
 import com.guilhermesantana.task_list.util.DateFormat;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,15 @@ public class TaskService {
     }
 
     public Tasks createTask(Tasks tasks) {
+        LocalDateTime start = tasks.getDate().minusMinutes(20);
+        LocalDateTime end = tasks.getDate().plusMinutes(20);
+
+        Integer conflicts = tasksRepository.existDate(start, end);
+
+        if(conflicts > 0) {
+            throw new IllegalArgumentException("Horário indisponível!");
+        }
+
         return tasksRepository.creteTask(tasks);
     }
 
@@ -28,7 +38,7 @@ public class TaskService {
                 .map(task -> new TaskDTO(
                         task.getTitle(),
                         task.getDescription(),
-                        DateFormat.dateFormatted(task.getDate()),
+                        DateFormat.brazillianTime(task.getDate()),
                         task.getLocation(),
                         DateFormat.toHour(task.getDate()),
                         task.getCategory()

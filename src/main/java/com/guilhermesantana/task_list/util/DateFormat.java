@@ -10,7 +10,7 @@ public class DateFormat {
         return date.format(formatter);
     }
 
-    public static String dateFormatted(LocalDateTime date) {
+    public static String brazillianTime(LocalDateTime date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return date.format(formatter);
     }

@@ -58,4 +58,9 @@ public class TasksRepository {
         String sql = "UPDATE tasks SET is_finished = true WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
+
+    public Integer existDate(LocalDateTime start, LocalDateTime end) {
+        String sql = "SELECT COUNT(*)  FROM tasks WHERE task_date BETWEEN ? AND ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, start, end);
+    }
 }
