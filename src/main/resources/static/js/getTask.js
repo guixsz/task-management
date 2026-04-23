@@ -32,7 +32,9 @@ function createCardTask(task) {
 
     const category = document.createElement('p')
     category.textContent = task.category
-    category.className = 'data-date'
+    category.className = 'data-category'
+    iconData(category, task)
+
 
     const hour = document.createElement('p')
     hour.textContent = task.hour
@@ -47,4 +49,14 @@ function createCardTask(task) {
 
 
     main.appendChild(card)
+}
+
+function iconData(category, task) {
+    if(task.category === 'DENTIST') {
+        category.classList.add('data-dentist')
+    }   else if (task.category === 'HEALTH') {
+            category.classList.add('data-health')
+    }   else if (task.category == 'EVENTS') {
+            category.classList.add('data-events')
+    }
 }

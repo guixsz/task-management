@@ -90,17 +90,33 @@
     content: "🕒";
 }
 
-.data-date:last-child {
+.data-category {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.data-health::before {
+    content: "❤️";
+}
+
+.data-dentist::before {
+    content: "🦷";
+}
+
+.data-category {
     align-self: flex-start;
     background-color: #eef2ff;
     color: var(--brand-color);
-    padding: 0.25rem 0.75rem;
+    padding: 0.30rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-.data-date:last-child::before {
+.data-events::before {
     content: "🏷️";
 }
